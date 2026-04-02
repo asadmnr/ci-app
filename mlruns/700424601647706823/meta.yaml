@@ -1,0 +1,7 @@
+artifact_location: /Users/asadmunir/mydata/courses/MLops/mlops-prac/ut-ci/mlruns/700424601647706823
+creation_time: 1775121367210
+experiment_id: '700424601647706823'
+last_update_time: 1775121367210
+lifecycle_stage: active
+name: boston-housing
+workspace: default
