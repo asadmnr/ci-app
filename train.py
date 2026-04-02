@@ -10,7 +10,11 @@ import mlflow.sklearn
 # MLflow Setup
 print("Setting up MLflow...")
 
-mlflow.set_tracking_uri("http://localhost:5000")
+#mlflow.set_tracking_uri("http://localhost:5000")
+#mlflow.set_experiment("boston-housing")
+
+mlflow.set_tracking_uri("file:./mlruns") 
+
 mlflow.set_experiment("boston-housing")
 
 print("MLflow setup completed!")
