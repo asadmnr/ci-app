@@ -6,8 +6,15 @@ import mlflow
 
 
 # MLflow Setup
+# MLflow Setup
+print("Setting up MLflow for testing...")
 
-mlflow.set_tracking_uri("http://localhost:5000")
+# Check if we are in GitHub Actions or have a specific URI set
+tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000")
+mlflow.set_tracking_uri(tracking_uri)
+
+print(f"Using tracking URI: {tracking_uri}")
+
 mlflow.set_experiment("boston-housing")
 
 
