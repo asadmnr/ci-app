@@ -13,9 +13,24 @@ print("Setting up MLflow...")
 #mlflow.set_tracking_uri("http://localhost:5000")
 #mlflow.set_experiment("boston-housing")
 
-mlflow.set_tracking_uri("file:./mlruns") 
+# mlflow.set_tracking_uri("file:./mlruns") 
 
+# mlflow.set_experiment("boston-housing")
+
+# Check if we are in GitHub Actions
+if os.getenv("GITHUB_ACTIONS") == "true":
+    # Use a local SQLite database for CI - much more stable
+    tracking_uri = "sqlite:///mlflow.db"
+else:
+    # Use your local server for development
+    tracking_uri = os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000")
+
+mlflow.set_tracking_uri(tracking_uri)
 mlflow.set_experiment("boston-housing")
+
+print(f"MLflow tracking URI: {mlflow.get_tracking_uri()}")
+
+
 
 print("MLflow setup completed!")
 # Load Training Data
